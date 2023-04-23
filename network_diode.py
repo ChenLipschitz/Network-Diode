@@ -1,19 +1,35 @@
 import socket
 
 # Set up listening socket
-diode_addr = ('localhost', 7000)
-s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+diode_addr = ('10.9.0.4', 7000)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind(diode_addr)
+s.listen()
 
-# Connect to proxy-2
-proxy2_addr = ('localhost', 8000)
 
-# Receive UDP packets from sender and forward them to proxy-2
+# Wait for connection from proxy-a
+print("network-diode is listening...")
+conn, addr = s.accept()
+print(f"Connection established with {addr}.")
+
+# Receive file data
+filedata = b''
 while True:
-    data, addr = s.recvfrom(1024)
+    data = conn.recv(1024)
+    print(data)
+    print("recived data in network")
     if not data:
         break
-    s.sendto(data, proxy2_addr)
+    filedata += data
+
+# Connect to proxy-2
+proxy2_addr = ('10.9.0.5', 8000)
+
+
+#with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+    s.connect(proxy2_addr)
+    s.sendall(filedata)
 
 # Close the connection
 s.close()
