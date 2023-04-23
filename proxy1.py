@@ -2,7 +2,7 @@ import socket
 import hashlib
 
 # Set up listening socket
-proxy1_addr = ('localhost', 6000)
+proxy1_addr = ('10.9.0.3', 6000)
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind(proxy1_addr)
 s.listen()
@@ -16,6 +16,8 @@ print(f"Connection established with {addr}.")
 filedata = b''
 while True:
     data = conn.recv(1024)
+    print(data)
+    print("recived data in proxy1")
     if not data:
         break
     filedata += data
@@ -31,12 +33,13 @@ conn.sendall(md5.encode())
 conn.close()
 s.close()
 
-# Connect to network diode
-diode_addr = ('localhost', 7000)
-s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-# Send file to network diode
-s.sendto(filedata, diode_addr)
 
-# Close the connection
-s.close()
+# Send to neteork 
+network_diode_address = ('10.9.0.4', 7000)
+
+
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.connect(network_diode_address)
+    s.sendall(filedata)
+
