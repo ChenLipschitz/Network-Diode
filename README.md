@@ -11,7 +11,17 @@ to pass along malware, access your system, or accidentally make harmful changes.
 <img src=https://github.com/ChenLipschitz/Network-Diode/blob/main/images/dataDiode%20idea.jpg alt="data diode img" width="632" height="180">
 
 
+## Our Data Diode Components:
 
+*	Sender- encodes a file and sends it to Proxy1 using the TCP
+*	Proxy1- receives the encoded file, decodes it, and sends the file to the Data Diode using our RUDP.
+*	Data Diode
+*	Proxy2- receives the encoded file, decodes it and sends the encoded file to End User using the TCP.
+*	End User- receives the encoded file, decode it and saves the file.
+
+
+<b> NOTE- </b>
+In our solution, we utilize a protocol break between the sender and end user to ensure secure data transfer. This break enables data to be transferred via different protocols, concealing sensitive source network information and preventing the transmission of malicious data. Our proxies facilitate two-way communication on each side of the data diode (Sender-Proxy1, Proxy2-EndUser), allowing for unidirectional network communication using two-way protocols like TCP.
 
 ## Bibliography
 * <a href=https://owlcyberdefense.com/blog/what-is-data-diode-technology-how-does-it-work/> owlcyberdefense </a>
