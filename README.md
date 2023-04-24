@@ -8,6 +8,8 @@ Data diodes effectively eliminate external points of entry to the sending system
 Securing all of a network’s data outflow with data diodes makes it impossible for an insecure or hostile network
 to pass along malware, access your system, or accidentally make harmful changes. (for more info click <a href=https://owlcyberdefense.com/blog/what-is-data-diode-technology-how-does-it-work/> here </a>).
 
+<img src= alt="">
+
 ## Bibliography
 * <a href=https://owlcyberdefense.com/blog/what-is-data-diode-technology-how-does-it-work/> owlcyberdefense </a>
 * <a href=https://athenadynamics.com/demystifying-data-diodes-data-diodes-explaine> athenadynamics </a>
