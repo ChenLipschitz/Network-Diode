@@ -34,25 +34,25 @@ services:
                 - ./volumes:/volumes
         command: "python3 proxy1.py"
         depends_on:
-                - network_diode
+                - proxy_b
                  
 
 
-    network_diode:
-        build: 
-                context: network_diode/
-        container_name: networkDiode-10.9.0.4
-        tty: true
-        cap_add:
-                - ALL
-        networks:
-            net-10.9.0.0:
-                ipv4_address: 10.9.0.4
-        volumes:
-                - ./volumes:/volumes
-        command: "python3 network_diode.py"
-        depends_on:
-                - proxy_b
+#     network_diode:
+#         build: 
+#                 context: network_diode/
+#         container_name: networkDiode-10.9.0.4
+#         tty: true
+#         cap_add:
+#                 - ALL
+#         networks:
+#             net-10.9.0.0:
+#                 ipv4_address: 10.9.0.4
+#         volumes:
+#                 - ./volumes:/volumes
+#         command: "python3 network_diode.py"
+#         depends_on:
+#                 - proxy_b
 
     proxy_b:
         build: 
