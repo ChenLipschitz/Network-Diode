@@ -6,8 +6,3 @@ WORKDIR /app
 COPY . /app
 
 RUN pip3 install tqdm 
-
-CMD ["python3", "user.py"]
-
-
-
