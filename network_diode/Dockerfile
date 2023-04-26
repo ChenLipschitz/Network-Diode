@@ -6,4 +6,3 @@ WORKDIR /app
 COPY . /app
 
 CMD ["python3", "network_diode.py"]
-
