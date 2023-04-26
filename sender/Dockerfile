@@ -5,5 +5,4 @@ WORKDIR /app
 
 COPY . /app
 
-CMD ["python3", "sender.py"]
-
+# CMD ["python3", "sender.py"]
